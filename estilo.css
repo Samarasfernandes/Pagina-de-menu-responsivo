@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Neonderthaw&family=Oleo+Script+Swash+Caps:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', serif;
+}
+body {
+  min-height: 100vh;
+  background: url('img/background.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.3rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+.header ::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba (0, 0, 0, .1);
+  backdrop-filter: blur(50px);
+  z-index: -1;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+  transition: .50s;
+}
+
+.header:hover::after {
+  left: 100%;
+}
+
+.logo {
+  font-size: 2rem;
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar a {
+  font-size: 1.15rem;
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+#check {
+  display: none;
+}
+
+.icons {
+  position: absolute;
+  font-size: 2.8rem;
+  color: aliceblue;
+  cursor: pointer;
+  display: none;
+  right: 12%;
+}
+
+/*Responsivo*/
+@media (max-width: 450px) {
+  .header {
+    padding: 1.3rem 12%;
+    
+  }
+  
+}
+@media (max-width: 768px) {
+  .icons {
+    display: block;
+  }
+  #check:checked ~ .icons #menu-icon {
+    display: none;
+  }
+  .icons #close-icon {
+    display: none;
+  }
+  #check:checked~.icons #close-icon {
+    display: block;
+  }
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background: rgba (0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 .5rem 1rem rgba (0, 0, 0, .1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  #check:checked ~.navbar {
+    height: 17.7rem;
+  }
+
+  .navbar a {
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    transition: 0.3s ease;
+    opacity: 0;
+    padding: 0;
+  }
+  #check:checked ~ .navbar a {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: calc(0.15s * var(--i));
+  }
+  .botaos{
+    flex-direction: column; /* Empilha os botões verticalmente */
+        align-items: center; /* Centraliza os botões */
+        gap: 10px; /* Ajusta o espaço entre os botões */
+  }
+  .botao {
+    width: 100%; /* Os botões ocupam toda a largura do contêiner */
+    max-width: none; /* Remove a largura máxima */
+  }
+  .texto{
+    font-size: 20px;
+    text-align: center;
+    width: 95%;
+  }
+  .descri{
+    text-align: left; /* Alinha o texto à esquerda */
+    text-wrap: balance;
+    right: 10%;
+    gap: 60px;
+    width: 95%;
+    
+  }
+}
+
+.texto{
+    font-family: "Roboto", serif;
+    color: aliceblue;
+    font-size: 6rem;
+    position: absolute; /* Posiciona o texto sobre a imagem */
+    top: 38%; /* Alinha verticalmente no meio */
+    left: 50%; /* Alinha horizontalmente no meio */
+    transform: translate(-50%, -50%); /* Centraliza o texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    text-shadow: 2px 2px 10px rgba(175, 215, 254, 0.7); /* Adiciona sombra ao texto */
+}
+.descri{
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+    font-size: 0.8;
+    position: absolute; /* Posiciona o texto sobre a imagem */
+    top: 46%; /* Alinha verticalmente no meio */
+    left: 36%; /* Alinha horizontalmente no meio */
+   position: center;
+   font-weight: 600;
+   text-shadow: 2px 2px 10px rgba(53, 53, 53, 0.7); /* Adiciona sombra ao texto */
+    
+}
+.texto:hover{
+    color: transparent; /* Torna o texto transparente */
+      -webkit-text-stroke: 3px #ffff; /* Adiciona uma borda ao texto */
+      text-stroke: 1px #ffff; /* Compatibilidade com navegadores */
+}
+.botaos{
+    position: absolute; /* Posiciona o texto sobre a imagem */
+    top: 55%; /* Alinha verticalmente no meio */
+    left: 40%; /* Alinha horizontalmente no meio */
+   position: center;
+   width: -50%;
+   display: flex; /* Exibe os botões em linha */
+   justify-content: center; /* Centraliza os botões horizontalmente */
+   gap: 60px; /* Define o espaço entre os botões */
+   
+}
+.botao{
+cursor: pointer;
+background-color: #ffff;
+color: #026882;
+padding: 15px 32px;
+font-size: 16px;
+border-radius: 17px;
+border: 0;
+transition: 0.4s;
+}
+
+.botao:hover{
+    background-color: transparent;
+    color: #ffff;
+    border:2px solid #ffff; 
+}
+
